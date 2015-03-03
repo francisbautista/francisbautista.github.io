@@ -44,3 +44,5 @@ A python script `selection_engine.py` was used to drill-down through the initial
 * [D3 Wiki](https://github.com/mbostock/d3/wiki)
 * [MMDA-Interaksyon Data](http://mmdatraffic.interaksyon.com/)
 * [Proto.io Button](https://proto.io/freebies/onoff/)
+* [Papa Parse](https://github.com/mholt/PapaParse)
+* [jQuery](https://jquery.com/)
