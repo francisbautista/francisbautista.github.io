@@ -16,7 +16,7 @@ function getDataLine(hour, line, station, day){
       console.log("Tomorrow " + day);
       break
   }
-  var file = "../data_vis/data/0"+line+"_data/s"+station+"d0"+day+".csv";
+  var file = "../data/0"+line+"_data/s"+station+"d0"+day+".csv";
 
   d3.csv(file, function(error, data) {
 

@@ -19,16 +19,16 @@ var arc = d3.svg.arc()
 
 function init(hour, line, station, day){
 
-  var file = "../data_vis/data/0"+line+"_data/s"+station+"d0"+day+".csv"
-   d3.csv(file, 
+  var file = "../data/0"+line+"_data/s"+station+"d0"+day+".csv"
+   d3.csv(file,
     function(data) {
       var filtered =  data.filter(function(d) {return d["hour"]==hour });
-      var dataset = filtered.map(function(d) { 
-         return [ +d["nHigh"], +d["nMed"], + d["nLow"] ];     
+      var dataset = filtered.map(function(d) {
+         return [ +d["nHigh"], +d["nMed"], + d["nLow"] ];
       });
 
-      var dataset_sb = filtered.map(function(d) { 
-         return [ +d["sHigh"], +d["sMed"], + d["sLow"] ];     
+      var dataset_sb = filtered.map(function(d) {
+         return [ +d["sHigh"], +d["sMed"], + d["sLow"] ];
       });
 
       piePlotter(dataset[0]);
@@ -38,10 +38,10 @@ function init(hour, line, station, day){
       console.log("Station " + station);
       console.log("Day " + day);
       console.log("Hour " + hour);
-     
+
     });
 
-} 
+}
 
 
 function getData(hour, line, station, day, div, fn){
@@ -52,33 +52,33 @@ function getData(hour, line, station, day, div, fn){
   switch(day){
     case 7:
       day = today
-      console.log("Today " + day);   
+      console.log("Today " + day);
       break;
     case 8:
       day = today + 1;
         //If today is sunday
-        if (day==7){ day = 0; }  
-      console.log("Tomorrow " + day);    
-      break    
-  } 
+        if (day==7){ day = 0; }
+      console.log("Tomorrow " + day);
+      break
+  }
 
 
-  var file = "../data_vis/data/0"+line+"_data/s"+station+"d0"+day+".csv";
+  var file = "../data/0"+line+"_data/s"+station+"d0"+day+".csv";
 
 
 
-   d3.csv(file, 
+   d3.csv(file,
     function(data) {
 
       var filtered =  data.filter(function(d) {
         return d["hour"]==hour;
       });
-      var dataset = filtered.map(function(d) { 
-         return [ +d["nHigh"], +d["nMed"], + d["nLow"] ];     
+      var dataset = filtered.map(function(d) {
+         return [ +d["nHigh"], +d["nMed"], + d["nLow"] ];
       });
 
-      var dataset_sb = filtered.map(function(d) { 
-         return [ +d["sHigh"], +d["sMed"], + d["sLow"] ];     
+      var dataset_sb = filtered.map(function(d) {
+         return [ +d["sHigh"], +d["sMed"], + d["sLow"] ];
       });
 
       if (div=="#chart"){
@@ -87,8 +87,8 @@ function getData(hour, line, station, day, div, fn){
       else {
         fn(dataset_sb[0]);
       }
-      
-     
+
+
     });
 
 }
@@ -98,8 +98,8 @@ function getData(hour, line, station, day, div, fn){
 
 function piePlotter(dataset){
 
-  var data = [{"label":"High", "value": dataset[0]}, 
-              {"label":"Medium", "value":dataset[1]}, 
+  var data = [{"label":"High", "value": dataset[0]},
+              {"label":"Medium", "value":dataset[1]},
               {"label":"Low", "value":dataset[2]}];
 
   var vis = d3.select("#chart")
@@ -126,14 +126,14 @@ function piePlotter(dataset){
       .each(function(d){ this._current = d; })
           .append('title')
           .text(function(d,i){ return data[i].value + '%'; });
-    
+
   // render the labels
   arcs.append("svg:text")
       .attr("transform", function(d){
           return "translate(" + arc.centroid(d) + ")";
       })
       .attr("text-anchor", "middle")
-      .text(function(d,i){ 
+      .text(function(d,i){
           return data[i].value+"%";
       });
 
@@ -144,13 +144,13 @@ function piePlotter(dataset){
         .style("fill", "rgba(255,255,255,0.85)")
         .attr("class", "inside_nb")
         .text(function(d) { return 'NB'; });
-  
+
 }
 
 function piePlotter_SB(dataset){
 
-  var data = [{"label":"High", "value": dataset[0]}, 
-              {"label":"Medium", "value":dataset[1]}, 
+  var data = [{"label":"High", "value": dataset[0]},
+              {"label":"Medium", "value":dataset[1]},
               {"label":"Low", "value":dataset[2]}];
 
   var vis = d3.select("#chart_sb")
@@ -177,14 +177,14 @@ function piePlotter_SB(dataset){
       .each(function(d){ this._current = d; })
           .append('title')
           .text(function(d,i){ return data[i].value + '%'; });
-    
+
   // render the labels
   arcs.append("svg:text")
       .attr("transform", function(d){
           return "translate(" + arc.centroid(d) + ")";
       })
       .attr("text-anchor", "middle")
-      .text(function(d,i){ 
+      .text(function(d,i){
           return data[i].value+"%";
       });
 
@@ -195,7 +195,7 @@ function piePlotter_SB(dataset){
         .style("fill", "rgba(255,255,255,0.85)")
         .attr("class", "inside_sb")
         .text(function(d) { return 'SB'; });
-  
+
 }
 
 
@@ -206,11 +206,11 @@ function updatePieChart(hour, line, station, day)
     console.log("Station " + station);
     console.log("Day " + day);
     console.log("Hour " + hour);
-    updateArcs(hour, line, station, day, 
+    updateArcs(hour, line, station, day,
       "#chart");
     updateLabels(hour, line, station, day, "#chart");
 
-    updateArcs(hour, line, station, day, 
+    updateArcs(hour, line, station, day,
       "#chart");
 
     updateArcs(hour, line, station, day, "#chart_sb");
@@ -226,15 +226,15 @@ function updateArcs(hour, line, station, day, div)
   getData(hour, line, station, day, div, function(data){
       console.log(data);
 
-      var data =  [{"label":"High", "value": data[0]}, 
-                {"label":"Medium", "value":data[1]}, 
+      var data =  [{"label":"High", "value": data[0]},
+                {"label":"Medium", "value":data[1]},
                 {"label":"Low", "value":data[2]}];
 
       console.log("Low " + data[2].value);
-    
+
       d3.selectAll(div + " path title")
         .text(function(d,i){ return data[i].value + '%'; });
-    
+
       d3.selectAll(div + " path")
         .data(pie(data))
         .transition()
@@ -249,8 +249,8 @@ function updateArcs(hour, line, station, day, div)
 function updateLabels(hour, line, station, day, div)
 {
    getData(hour, line, station, day, div, function(data){
-     var data =  [{"label":"High", "value": data[0]}, 
-        {"label":"Medium", "value":data[1]}, 
+     var data =  [{"label":"High", "value": data[0]},
+        {"label":"Medium", "value":data[1]},
         {"label":"Low", "value":data[2]}];
 
     d3.selectAll(div + " text")
@@ -260,7 +260,7 @@ function updateLabels(hour, line, station, day, div)
             .attr("transform", function(d){
                 return "translate(" + arc.centroid(d) + ")";
             })
-            .text(function(d,i){ 
+            .text(function(d,i){
                 return data[i].value+"%";
             });
 
