@@ -63,7 +63,7 @@ function getData(hour, line, station, day, div, fn){
   }
 
 
-  var file = "../data_vis/data/0"+line+"_data/s"+station+"d0"+day+".csv";
+  var file = "../data/0"+line+"_data/s"+station+"d0"+day+".csv";
 
 
 
