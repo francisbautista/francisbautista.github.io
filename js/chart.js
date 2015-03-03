@@ -19,7 +19,7 @@ var arc = d3.svg.arc()
 
 function init(hour, line, station, day){
 
-  var file = "../data/0"+line+"_data/s"+station+"d0"+day+".csv"
+  var file = "../data_vis/data/0"+line+"_data/s"+station+"d0"+day+".csv"
    d3.csv(file,
     function(data) {
       var filtered =  data.filter(function(d) {return d["hour"]==hour });
@@ -63,7 +63,7 @@ function getData(hour, line, station, day, div, fn){
   }
 
 
-  var file = "../data/0"+line+"_data/s"+station+"d0"+day+".csv";
+  var file = "../data_vis/data/0"+line+"_data/s"+station+"d0"+day+".csv";
 
 
 
@@ -143,7 +143,7 @@ function piePlotter(dataset){
         .style("text-anchor", "middle")
         .style("fill", "rgba(255,255,255,0.85)")
         .attr("class", "inside_nb")
-        .text(function(d) { return 'NB'; });
+        .text(function(d) { return 'SB'; });
 
 }
 
@@ -194,7 +194,7 @@ function piePlotter_SB(dataset){
         .style("text-anchor", "middle")
         .style("fill", "rgba(255,255,255,0.85)")
         .attr("class", "inside_sb")
-        .text(function(d) { return 'SB'; });
+        .text(function(d) { return 'NB'; });
 
 }
 

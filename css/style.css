@@ -318,12 +318,12 @@ a {
 	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }
 .onoffswitch-inner:before {
-	content: "Northbound";
+	content: "Southbound";
 	padding-left: 17px;
 	background-color: #EBEBEB; color: #393939;
 }
 .onoffswitch-inner:after {
-	content: "Southbound";
+	content: "Northbound";
 	padding-right: 17px;
 	background-color: #393939; color: #EBEBEB;
 	text-align: right;
