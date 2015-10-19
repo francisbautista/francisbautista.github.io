@@ -1,0 +1,32 @@
+#map {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.leaflet-container a.leaflet-popup-close-button {
+  color:rgba(6, 162, 190,1) !important;
+}
+.custom .leaflet-popup-content-wrapper {
+  background:rgba(0, 0, 0, 0.70);
+  color:rgba(6, 162, 190,1);
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 0px;
+  border-color: rgba(6, 162, 190,0.9);
+  font-size:16px;
+  line-height:24px;
+  margin-bottom: 2em;
+  }
+.custom .leaflet-popup-content-wrapper a {
+  color:rgba(255,255,255,0.5);
+  }
+.custom .leaflet-popup-tip-container {
+  width:30px;
+  height:15px;
+  }
+.custom .leaflet-popup-tip {
+  background-color: transparent;
+  box-shadow: none;
+  }
