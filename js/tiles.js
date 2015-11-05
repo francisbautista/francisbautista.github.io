@@ -128,11 +128,11 @@ var lines = L.geoJson(myLines, {
 var map = L.map('map',{
     zoom: 15,
     center: [14.55465, 121.02659],
-    layers: [philMapStreet, philMapDark]
+    layers: [philMapStreet]
   });
 
 var baseMaps = {
-    "Philippines Dark": philMapDark,
+    // "Philippines Dark": philMapDark,
     "Philippines Light": philMapStreet
 };
 
